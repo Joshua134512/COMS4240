@@ -1,3 +1,4 @@
+# Factorial, uses a loop to multiply numbers until it reaches 1
 def factorial(x: int):
     ans = 1
     while(x > 0):
@@ -5,6 +6,7 @@ def factorial(x: int):
         x -= 1
     return ans
 
+# This function estimates e^x
 def estimate_ex(x):
     e = 2.7182818284590451
     ex = None
@@ -12,20 +14,16 @@ def estimate_ex(x):
     inner_parentheses = 0
     z = x - x0
     for i in range(10):
-        inner_parentheses += (z**i / factorial(i))
-    ex = e**x0 * inner_parentheses
+        inner_parentheses += (z**i / factorial(i)) # This calculates part of the equation for newton's method
+    ex = e**x0 * inner_parentheses # This puts the pieces together to get the final answer
     return ex
 
-def yield_next_iter_ln(s, x):
-    while True:
-        s = s - 1 + x * estimate_ex(-s)
-        yield s
-
+# Estimates ln(x) using newton's method
 def estimate_ln(x):
-    generator = yield_next_iter_ln(x, x)
+    s = x
     for i in range(10):
-        x = next(generator)
-    return x
+        s = s - 1 + x * estimate_ex(-s)
+    return s
 
 if __name__ == "__main__":
     inp = input("Select an option:\n1. Estimate e^x\n2. Estimate Ln(x)\n")
@@ -36,4 +34,4 @@ if __name__ == "__main__":
         case "2":
             print(estimate_ln(int(input("Enter x: "))))
         case _:
-            "Invalid option"
+            print("Invalid option")
