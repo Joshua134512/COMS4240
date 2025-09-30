@@ -1,0 +1,2 @@
+Enter next x coordinateEnter next y coordinateEnter next x coordinateEnter next y coordinateEnter next x coordinateEnter next y coordinateEnter next x coordinateEnter next y coordinatePerimeter of quad is 0.000000
+Area of quad is 0.000000
